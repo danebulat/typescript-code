@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Template Code Here -->
+<!-- ---------------------- -->
+
+<section class="container" id="app">
+  <div v-for="item in products" :key="item.id" id="item-list" class="row d-flex mb-3 align-items-center">
+    <template v-if="item.price <= Number(max)">
+      <div class="col-sm-4">
+        <img class="img-fluid d-block" :src="item.image" :alt="item.name">
+      </div>
+      <div class="col">
+       <h3 class="text-primary">{{item.name }}</h3>
+       <p class="mb-0">{{ item.description }}</p>
+       <div class="h5 float-right">
+         <span v-if="item.price > Number(90)" class="badge bg-success">premier</span>
+         <span v-else-if="item.price < Number(90) && item.price > Number(10)" class="badge bg-primary">value</span>
+         <span v-else="item.price <= Number(10)" class="badge bg-danger">sale</span>
+         ${{item.price}}</div>
+      </div>
+    </template>
+  </div>
+</section>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+
+<script>
+const App = {
+  data() {
+    return {
+      max: 100,
+      products : []
+    }
+  },
+  created() {
+    fetch('https://hplussport.com/api/products/order/price')
+      .then(response => response.json())
+      .then(data => {
+        this.products = data;
+      });
+  }
+}
+
+Vue.createApp(App).mount('#app')
+</script>
+</body>
+</html>

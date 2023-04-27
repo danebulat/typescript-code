@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Template Code Here -->
+<!-- ---------------------- -->
+
+<div>
+  <div id="app">
+   <h1>{{ name }}</h1>
+  </div>
+  <hr>
+  <div id="app2">
+    <h2>{{ name }}<h2>
+  </div>
+</div>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+
+<script>
+// App 1
+const App = {
+  data() {
+    return {
+      name: 'Bamboo Thermal Ski Coat'
+    }
+  }
+}
+
+Vue.createApp(App).mount('#app')
+
+// App 2
+Vue.createApp({
+  data() {
+    return {
+      name: 'Some text for the second app.'
+    }
+  }
+}).mount('#app2');
+</script>
+</body>
+</html>

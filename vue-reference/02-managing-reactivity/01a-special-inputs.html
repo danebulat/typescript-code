@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+
+<div class="sampleApp">
+  <h1>Special Inputs</h1>
+  
+  <h2 class="mt-3">Simple Checkbox</h2>
+  <div class="form-check">
+    <input v-model="displayLabels" class="form-check-input" id="showLabels" type="checkbox">
+    <label class="form-check-label" for="showLabels">
+        show labels
+    </label>
+    <div class="form-text">Display labels? {{displayLabels}}</div> 
+  </div>
+  
+  
+  <div class="form-check">
+    <input v-model="withValue" true-value="Value One"  false-value="Value Two" id="withValue" class="form-check-input" type="checkbox">
+    <label class="form-check-label" for="withValue">
+        with value
+    </label>
+    <div class="form-text">Display labels? {{withValue}}</div>
+  </div>
+  
+  <hr>
+  
+  <h2 class="mt-3">Multiple Checkboxes</h2>
+  <div class="form-check">
+    <input v-model="myCheckboxes" value="first" class="form-check-input" type="checkbox" id="checkboxes1">
+    <label class="form-check-label" for="checkboxes1">
+      First
+    </label>
+  </div>
+  <div class="form-check">
+    <input v-model="myCheckboxes" value="second" class="form-check-input" type="checkbox" id="checkboxes2">
+    <label class="form-check-label" for="checkboxes2">
+      Second
+    </label>
+  </div>
+  <div class="form-check">
+    <input v-model="myCheckboxes" value="third" class="form-check-input" type="checkbox" id="checkboxes3">
+    <label class="form-check-label" for="checkboxes3">
+      Third
+    </label>
+  </div>
+  <div class="form-text">Checkboxes: {{myCheckboxes}}</div>
+  
+  <hr>
+  
+  <h2 class="mt-3">Radios</h2>
+  <div class="form-check">
+    <input v-model="myRadios" value="First" class="form-check-input" type="radio" id="radio1">
+    <label class="form-check-label" for="radio1"> First
+    </label>
+  </div>
+  <div class="form-check">
+    <input v-model="myRadios" value="Second" class="form-check-input" type="radio" id="radio2">
+    <label class="form-check-label" for="radio2"> 
+      Second
+    </label>
+  </div>
+  <div class="form-check">
+    <input v-model="myRadios" value="Third" class="form-check-input" type="radio" id="radio3">
+    <label class="form-check-label" for="radio3"> 
+      Third
+    </label>
+  </div>
+  <div class="form-text">Radios: {{myRadios}}</div>
+</div>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      displayLabels: true,
+      withValue: null, // adding 'Value One' doesn't auto-check
+      myCheckboxes: [],
+      myRadios: 'Second' // null starts empty
+    }
+  }
+}).mount('.sampleApp')
+</script>
+</body>
+</html>
+

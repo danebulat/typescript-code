@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+<div class="sampleApp">
+  <div v-for="n in 10">
+    {{ n }}) {{ randComputed }}
+  </div>
+  <hr>
+  <div v-for="n in 10">
+    {{ n }}) {{ randMethod() }}
+  </div>
+</div>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      howBig: 10
+    }
+  },
+  computed: {
+    randComputed() {
+      return Math.floor(Math.random() * this.howBig);
+    }
+  },
+  methods: {
+    randMethod() {
+      return Math.floor(Math.random() * this.howBig);
+    }
+  }
+}).mount('.sampleApp')
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+<div class="sampleApp">
+  <h2>Select Inputs</h2>
+  
+  <select v-model="mySelect" class="form-select" aria-label="Select Example">
+    <option selected value="">Choose...</option>
+    <option>One</option>
+    <option>Two</option>
+    <option>Three</option>
+  </select>
+  <div class="form-text">Chosen: {{mySelect}}</div> 
+  
+  <h2 class="mt-4">Multiple Options</h2>
+  <select v-model.number="myMultiple"  multiple class="form-select" aria-label="Select Multiple">
+    <option selected disabled value="">Choose...</option>
+    <option value="1">One</option>
+    <option value="2" >Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="form-text">Multiple: {{myMultiple}}</div> 
+  
+  <h2 class="mt-4">Dynamic Options</h2>
+  <select v-model="myDynamic" class="form-select" aria-label="Select Dynamic">
+      <option selected disabled value="">Choose...</option>
+      <option v-for="option in myOptions" :value="option.value">
+        {{ option.text }}
+      </option>
+  </select>
+  <div class="form-text">Dynamic: {{myDynamic}}</div>
+</div>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      mySelect: "",
+      myMultiple: [],
+      myDynamic: "",
+      myOptions: [
+        { text: 'First', value: 1 },
+        { text: 'Second', value: 2 },
+        { text: 'Third', value: 3 }
+      ]
+    }
+  }
+}).mount('.sampleApp')
+</script>
+</body>
+</html>
+

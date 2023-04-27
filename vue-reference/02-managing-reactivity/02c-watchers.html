@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Vue Template</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'></script>
+</head>
+<body class="container mt-5">
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+
+<div class="sampleApp">
+  <label for="max-price" class="form-label">Maximum Price</label>
+  <input v-model.lazy="max" type="number" class="form-control" id="max-price" aria-describedby="maxHelp" >
+  <div id="maxHelp" class="form-text">Set the maximum price to: {{max}}</div>
+  {{myAlert}}  
+</div>
+
+<!-- ---------------------- -->
+<!-- App Script Code Here   -->
+<!-- ---------------------- -->
+
+<script>
+Vue.createApp({
+  data() {
+    return {
+      max: 5,
+      myAlert: ''
+    }
+  },
+  watch: {
+    // Execute this function when `max` variable changes
+    max(myValue) {
+      (myValue > 100) ? this.myAlert = 'Over Budget': this.myAlert = 'Much better'
+    }
+  }
+}).mount('.sampleApp')
+</script>
+</body>
+</html>
+
